@@ -1,0 +1,15 @@
+<div class="form-check mx-2" *ngFor="let filter of filters; let i = index">
+    <input
+        class="form-check-input cursor-pointer border-black"
+        type="radio"
+        name="filterRadio"  
+        [id]="'flexRadioDefault' + i" 
+        [value]="filter.text"  
+        [(ngModel)]="selectedFilter" 
+        [checked]="selectedFilter === filter.text"
+        (change)="onSelectedFilterRadioButtonChanged()">
+
+    <label class="form-check-label" [for]="'flexRadioDefault' + i">
+        {{ filter.text }} ({{ filter.value }})
+    </label>
+</div>

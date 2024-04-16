@@ -1,0 +1,18 @@
+<nav class="bg-blue-800 navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <div class="ml-4 mr-4">
+        <img class="h-14 w-36 cursor-pointer rounded-3xl" src="../../assets/Citrix.jpg" alt="logo">
+      </div>
+      <div class="mr-8 flex flex-row">
+        <ul class="flex flex-row mt-1 mr-12">
+          <li class="nav-item ml-6 text-blue-50 text-xl font-medium" *ngFor="let item of navItems">
+            <a [href]="item.url">{{ item.text }}</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #searchInput>
+          <button class=" bg-white hover:text-blue-900 hover:font-extrabold rounded-lg pl-3 pr-3" (click)="onSearchClicked(searchInput)" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>

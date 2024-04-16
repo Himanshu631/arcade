@@ -1,0 +1,14 @@
+<div class="card mx-8 mb-6" style="width: 18rem">
+  <img [src]="user.avatar_url" class="h-60 card-img-top" alt="logo" />
+  <div class="card-body">
+    <h5 class="card-title">{{ user.name }}</h5>
+    <p class="card-text h-12">{{ user.bio }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Current Company: {{ user.company }}</li>
+    <li class="list-group-item">Location: {{ user.location }}</li>
+  </ul>
+  <div class="card-body">
+    <a [href]="user.repos_url" class="card-link">GitHub</a>
+  </div>
+</div>
