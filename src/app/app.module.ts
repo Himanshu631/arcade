@@ -10,6 +10,9 @@ import { UserListComponent } from './container/user-list/user-list.component';
 import { UserCardComponent } from './container/user-list/user-card/user-card.component';
 import { FilterComponent } from './container/user-list/filter/filter.component';
 import { FormsModule } from '@angular/forms';
+import { HooksComponent } from './hooks/hooks.component';
+import { TesthookComponent } from './hooks/testhook/testhook.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { FormsModule } from '@angular/forms';
     ContainerComponent,
     UserListComponent,
     UserCardComponent,
-    FilterComponent
+    FilterComponent,
+    HooksComponent,
+    TesthookComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

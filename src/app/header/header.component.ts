@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SearchService } from '../services/search.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { SearchService } from '../services/search.service';
 })
 export class HeaderComponent {
   searchValue: string = '';
+  isLogIn: boolean = false;
 
   constructor(private searchService: SearchService){}
 
@@ -18,11 +19,15 @@ export class HeaderComponent {
     { text: 'Profile', url: '/#' },
   ];
 
+  @ViewChild('searchInput') searchInp : ElementRef;
   
-  
-  onSearchClicked(inputEl : HTMLInputElement){
-    console.log(inputEl.value);
-    this.searchService.updateSearch(inputEl.value);
+  // onSearchClicked(inputEl : HTMLInputElement){
+  //   console.log(inputEl.value);
+  //   this.searchService.updateSearch(inputEl.value);
+  // }
+
+  onSearchClicked(){
+    this.searchService.updateSearch(this.searchInp.nativeElement.value);
   }
   
 }
