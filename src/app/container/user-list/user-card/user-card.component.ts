@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-card',
@@ -7,16 +7,24 @@ import { Component, Input } from '@angular/core';
 })
 export class UserCardComponent {
 
-  @Input()
-  user:{
-    login: string,
-    avatar_url: string;
-    repos_url: string;
-    type: string;
-    name: string,
-    company: string,
-    location: string,
-    bio: string
-  };
+  @Output() 
+  joinClicked = new EventEmitter<string>();
 
+  @Input()
+  team: {
+    team_name: string,
+      team_logo: string,
+      captain: string,
+      owner: string,
+      winning_years: number[],
+      home_stadium: string,
+      coach: string,
+      team_colors: string[],
+      founding_year: number,
+      website_url: string
+  }
+  
+  onJoinButtonClick(){
+    this.joinClicked.emit(this.team.team_logo)
+  }
 }

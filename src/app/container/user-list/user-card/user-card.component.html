@@ -1,28 +1,28 @@
 <div class="card mx-8 mb-6" style="width: 18rem">
-  <img [src]="user.avatar_url" class="h-60 card-img-top" alt="logo" />
+  <img [src]="team.team_logo" class="h-60 card-img-top" alt="logo" />
   <div class="card-body">
     <h5
       class="card-title"
-      [ngStyle]="{ 'font-weight': user.type === 'Admin' ? 'bold' : 'normal' }"
+      [ngStyle]="{ 'font-weight': team.home_stadium === 'Admin' ? 'bold' : 'normal' }"
     >
-      {{ user.name }}
+      {{ team.team_name }}
     </h5>
-    <p class="card-text h-12">{{ user.bio }}</p>
+    <p class="card-text h-12">{{ team.captain }}</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Current Company: {{ user.company }}</li>
-    <li class="list-group-item">Location: {{ user.location }}</li>
+    <li class="list-group-item">{{ team.home_stadium }}</li>
+    <li class="list-group-item">{{ team.owner }}</li>
   </ul>
   <div class="card-body">
-    <a [href]="user.repos_url" class="card-link">GitHub</a>
+    <a [href]="team.website_url" class="card-link">Website</a>
     <ng-template #admin>
       <button type="button" class="ml-4 btn btn-warning">Admin</button>
     </ng-template>
     <ng-template #usr>
-      <button type="button" class="ml-4 btn btn-info">User</button>
+      <button type="button" (click)="onJoinButtonClick()" class="ml-4 btn btn-info">Join Fanclub</button>
     </ng-template>
 
-    <ng-container *ngIf="user.type === 'Admin'; else usr">
+    <ng-container *ngIf="team.coach === 'Admin'; else usr">
       <ng-template [ngTemplateOutlet]="admin"></ng-template>
     </ng-container>
   </div>

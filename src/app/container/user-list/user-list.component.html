@@ -1,4 +1,4 @@
-<div class="my-7 flex justify-center">
+<!-- <div class="my-7 flex justify-center">
   <app-filter
     class="flex flex-row"
     [All]="totalEngineers"
@@ -6,10 +6,21 @@
     [USA]="usaEngineers"
     (selectedFilterRadioButtonChanged)="onChangedSelectedFilter($event)"
   ></app-filter>
+</div> -->
+
+<div class="my-7 flex justify-center">
+  <app-filter
+    class="flex flex-row"
+    [allTeams]="allTeams"
+    [winners]="winners"
+    [nonWinners]="nonWinners"
+    (selectedFilterRadioButtonChanged)="onChangedSelectedFilter($event)"
+  ></app-filter>
 </div>
 
 <div class="flex flex-row flex-wrap">
-  <div *ngFor="let u of filteredUsers">
-    <app-user-card [user]="u" *ngIf="selectedFilterRadio === 'All' || u.location===selectedFilterRadio"></app-user-card>
+  <div *ngFor="let team of filteredTeams">
+    <!-- <app-user-card [user]="u" *ngIf="selectedFilterRadio === 'All' || u.location===selectedFilterRadio"></app-user-card> -->
+    <app-user-card [team]="team" *ngIf="selectedFilterRadio === 'All Teams' || team.winner === selectedFilterRadio" (joinClicked)="onJoinButtonClicked($event)"></app-user-card>  
   </div>
 </div>

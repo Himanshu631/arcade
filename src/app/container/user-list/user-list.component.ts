@@ -1,119 +1,182 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SearchService } from '../../services/search.service';
+import { ImageService } from '../../services/image.service';
+
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.scss'
+  styleUrl: './user-list.component.scss',
 })
 export class UserListComponent {
-  users = [
+
+  teams = [
     {
-      "login": "Raghav485",
-      "avatar_url": "https://t4.ftcdn.net/jpg/06/36/46/45/240_F_636464567_rTteiuRZHlq92RvbV25PmqAWwqHxb1Yb.jpg",
-      "repos_url": "https://api.github.com/users/Himanshu631/repos",
-      "type": "User",
-      "name": "Raghav Jain",
-      "company": "Morgan Stanley",
-      "location": "India",
-      "bio": "Software Engineer Morgan Stanley"
+      team_name: 'Mumbai Indians',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2021/12/Mumbai-Indians-logo.png',
+      captain: 'Rohit Sharma',
+      owner: 'Reliance Industries',
+      winning_years: [2013, 2015, 2017, 2019, 2020],
+      home_stadium: 'Wankhede Stadium',
+      coach: 'Mahela Jayawardene',
+      team_colors: ['Blue', 'Gold'],
+      founding_year: 2008,
+      website_url: 'https://www.mumbaiindians.com/',
+      winner: 'Winners'
     },
     {
-      "login": "Sneha874",
-      "avatar_url": "https://t3.ftcdn.net/jpg/05/87/35/38/240_F_587353889_8I4Ed50y3aJoMRIzPxciUUTBjYi2IjZV.jpg",
-      "repos_url": "https://api.github.com/users/Himanshu631/repos",
-      "type": "User",
-      "name": "Sneha Gaurav",
-      "company": "Microsoft",
-      "location": "India",
-      "bio": "Software Engineer at Microsoft || B.Tech in Computer Science"
+      team_name: 'Chennai Super Kings',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2021/12/CSK-Logo.png',
+      captain: 'MS Dhoni',
+      owner: 'India Cements',
+      winning_years: [2010, 2011, 2018, 2021, 2023],
+      home_stadium: 'M. A. Chidambaram Stadium',
+      coach: 'Stephen Fleming',
+      team_colors: ['Yellow', 'Blue'],
+      founding_year: 2008,
+      website_url: 'https://www.chennaisuperkings.com/',
+      winner: 'Winners'
     },
     {
-      "login": "Himanshu631",
-      "avatar_url": "https://avatars.githubusercontent.com/u/55944613?v=4",
-      "repos_url": "https://api.github.com/users/Himanshu631/repos",
-      "type": "Admin",
-      "name": "Himanshu Paul",
-      "company": "Google",
-      "location": "India",
-      "bio": "Software Engineer || B.Tech in Computer Science"
+      team_name: 'Kolkata Knight Riders',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2021/12/KKR-Logo.png',
+      captain: 'Nitish Rana',
+      owner: 'Red Chillies Entertainment and Mehta Group',
+      winning_years: [2012, 2014],
+      home_stadium: 'Eden Gardens',
+      coach: 'Chandrakant Pandit',
+      team_colors: ['Purple', 'Gold'],
+      founding_year: 2008,
+      website_url: 'https://www.kkr.in/',
+      winner: 'Winners'
     },
     {
-      "login": "Genie23",
-      "avatar_url": "https://t4.ftcdn.net/jpg/06/30/72/63/240_F_630726395_e4SnTyL9idLitfpb8jSDTCYej6pWZf3U.jpg",
-      "repos_url": "https://api.github.com/users/Himanshu631/repos",
-      "type": "User",
-      "name": "Genie Singh",
-      "company": "Cavisson",
-      "location": "USA",
-      "bio": "Software Engineer || NodeJs Developer"
+      team_name: 'Royal Challengers Bangalore',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2021/12/Royal-Challengers-Bangalore-Logo.png',
+      captain: 'Faf du Plessis',
+      owner: 'United Spirits',
+      winning_years: [],
+      home_stadium: 'M. Chinnaswamy Stadium',
+      coach: 'Sanjay Bangar',
+      team_colors: ['Red', 'Gold'],
+      founding_year: 2008,
+      website_url: 'https://www.royalchallengers.com/',
+      winner: 'Non-Winners'
     },
     {
-      "login": "Surbhi90",
-      "avatar_url": "https://img.freepik.com/premium-photo/corporate-businesswoman-stands-smiling-outside-her-office-building_323624-1797.jpg?size=626&ext=jpg&ga=GA1.1.59398754.1713080738&semt=ais",
-      "repos_url": "https://api.github.com/users/Himanshu631/repos",
-      "type": "User",
-      "name": "Surbhi Kumari",
-      "company": "Lowes India",
-      "location": "India",
-      "bio": "Software Engineer || NodeJs Developer"
+      team_name: 'Delhi Capitals',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2021/12/Delhi-Capitals-Logo.png',
+      captain: 'David Warner',
+      owner: 'JSW Group and GMR Group',
+      winning_years: [],
+      home_stadium: 'Arun Jaitley Stadium',
+      coach: 'Ricky Ponting',
+      team_colors: ['Blue', 'Red'],
+      founding_year: 2008,
+      website_url: 'https://www.delhicapitals.in/',
+      winner: 'Non-Winners'
     },
     {
-      "login": "Prabhas_Kumar",
-      "avatar_url": "https://img.freepik.com/premium-photo/smiling-businessman-using-digital-tablet-office-premises_107420-96811.jpg?size=626&ext=jpg&ga=GA1.1.59398754.1713080738&semt=ais",
-      "repos_url": "https://api.github.com/users/Himanshu631/repos",
-      "type": "User",
-      "name": "Prabhas Kumar",
-      "company": "AFCONS",
-      "location": "USA",
-      "bio": "Structural Engineer"
+      team_name: 'Punjab Kings',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2021/12/Punjab-Kings.png',
+      captain: 'Shikhar Dhawan',
+      owner: 'Mohit Burman, Ness Wadia, Preity Zinta, Karan Paul',
+      winning_years: [],
+      home_stadium: 'Punjab Cricket Association IS Bindra Stadium',
+      coach: 'Trevor Bayliss',
+      team_colors: ['Red', 'White'],
+      founding_year: 2008,
+      website_url: 'https://www.punjabkingsipl.in/',
+      winner: 'Non-Winners'
     },
     {
-      "login": "JohnEng",
-      "avatar_url": "https://img.freepik.com/premium-photo/generative-ai-indian_117141-400.jpg?size=626&ext=jpg",
-      "repos_url": "https://api.github.com/users/Himanshu631/repos",
-      "type": "User",
-      "name": "John Twain",
-      "company": "Myntra",
-      "location": "India",
-      "bio": "Software Engineer || Full Stack Developer"
+      team_name: 'Sunrisers Hyderabad',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2022/01/SRH-team-logo.png',
+      captain: 'Aiden Markram',
+      owner: 'Sun TV Network',
+      winning_years: [2016],
+      home_stadium: 'Rajiv Gandhi International Cricket Stadium',
+      coach: 'Brian Lara',
+      team_colors: ['Orange', 'Black'],
+      founding_year: 2013,
+      website_url: 'https://www.sunrisershyderabad.in/',
+      winner: 'Winners'
     },
     {
-      "login": "Roshan",
-      "avatar_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaPP2z-PBAXCx98vwE607wHRpA7w11cTHIOQ&s",
-      "repos_url": "https://api.github.com/users/Himanshu631/repos",
-      "type": "User",
-      "name": "Roshan Kumar",
-      "company": "TATA Communications",
-      "location": "India",
-      "bio": "Network Engineer "
-    }
+      team_name: 'Rajasthan Royals',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2021/12/Rajasthan-Royals-Logo-1920x1080.jpg',
+      captain: 'Sanju Samson',
+      owner: 'Manoj Badale, Lachlan Murdoch',
+      winning_years: [2008],
+      home_stadium: 'Sawai Mansingh Stadium',
+      coach: 'Kumar Sangakkara',
+      team_colors: ['Pink', 'Blue'],
+      founding_year: 2008,
+      website_url: 'https://www.rajasthanroyals.com/',
+      winner: 'Winners'
+    },
+    {
+      team_name: 'Gujarat Titans',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2022/02/Gujarat-Titans-Logo.png',
+      captain: 'Hardik Pandya',
+      owner: 'CVC Capital Partners',
+      winning_years: [2022],
+      home_stadium: 'Narendra Modi Stadium',
+      coach: 'Ashish Nehra',
+      team_colors: ['Navy Blue', 'Silver'],
+      founding_year: 2021,
+      website_url: 'https://www.gujarattitansipl.com/',
+      winner: 'Winners'
+    },
+    {
+      team_name: 'Lucknow Super Giants',
+      team_logo: 'https://www.timesofsports.com/wp-content/uploads/2022/01/Lucnow-Supergiants-IPL-Logo.png',
+      captain: 'KL Rahul',
+      owner: 'RP-Sanjiv Goenka Group',
+      winning_years: [],
+      home_stadium: 'BRSABV Ekana Cricket Stadium',
+      coach: 'Andy Flower',
+      team_colors: ['Blue', 'Green', 'Orange'],
+      founding_year: 2021,
+      website_url: 'https://www.lucknowsupergiants.in/',
+      winner: 'Non-Winners'
+    },
   ];
 
-  filteredUsers = [];
+  filteredTeams = [];
 
-  constructor(private searchService: SearchService){}
+  constructor(private searchService: SearchService, private imgSer: ImageService) {}
 
-  ngOnInit(){
-    this.searchService.search$.subscribe(searchValue => {
-      this.filteredUsers = this.filterUsers(searchValue);
+  ngOnInit() {
+
+    this.searchService.search$.subscribe((searchValue) => {
+      this.filteredTeams = this.filterTeams(searchValue);
     });
   }
 
-  totalEngineers = this.users.length;
-  indianEngineers = this.users.filter(p => p.location==="India").length;
-  usaEngineers = this.totalEngineers - this.indianEngineers;
+  allTeams = this.teams.length;
+  winners = this.teams.filter((p) => p.winning_years.length != 0).length;
+  nonWinners = this.allTeams - this.winners;
 
-  selectedFilterRadio: string = 'All';
+  selectedFilterRadio: string = 'All Teams';
 
-  onChangedSelectedFilter(value: string){
+  onChangedSelectedFilter(value: string) {
+    console.log(this.selectedFilterRadio);
     this.selectedFilterRadio = value;
   }
 
-  filterUsers(searchValue: string){
+  filterTeams(searchValue: string) {
     if (searchValue.trim() === '') {
-      return this.users;
+      return this.teams;
     }
-    return this.users.filter(user => user.name.toLowerCase().includes(searchValue.toLowerCase()));
+    return this.teams.filter((team) =>
+      team.team_name.toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
+
+  onJoinButtonClicked(imageUrl: string): void {
+    // Pass the image URL to the form component using the shared service
+    this.imgSer.updateImageUrl(imageUrl);
+  }
+  
 }

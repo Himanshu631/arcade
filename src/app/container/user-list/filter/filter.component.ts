@@ -3,33 +3,32 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrl: './filter.component.scss'
+  styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
   @Input()
-  All: number;
+  allTeams: number;
   @Input()
-  India: number;
+  winners: number;
   @Input()
-  USA: number;
+  nonWinners: number;
 
-  filters: { text: string; value: number }[] = [];
+  filters: { text: string; value: any }[] = [];
 
   ngOnInit(): void {
     this.filters = [
-      { text: 'All', value: this.All },
-      { text: 'India', value: this.India },
-      { text: 'USA', value: this.USA }
+      { text: 'All Teams', value: this.allTeams },
+      { text: 'Winners', value: this.winners },
+      { text: 'Non-Winners', value: this.nonWinners }
     ];
   }
 
-  selectedFilter: string = 'All';
+  selectedFilter: string = 'All Teams';
 
   @Output()
-  selectedFilterRadioButtonChanged: EventEmitter<string> = new EventEmitter<string>;
+  selectedFilterRadioButtonChanged: EventEmitter<string> = new EventEmitter<string>();
 
-  onSelectedFilterRadioButtonChanged(){
+  onSelectedFilterRadioButtonChanged(): void {
     this.selectedFilterRadioButtonChanged.emit(this.selectedFilter);
   }
-
 }
