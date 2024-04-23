@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router'
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -10,16 +10,15 @@ import { UserListComponent } from './container/user-list/user-list.component';
 import { UserCardComponent } from './container/user-list/user-card/user-card.component';
 import { FilterComponent } from './container/user-list/filter/filter.component';
 import { FormsModule } from '@angular/forms';
-import { HooksComponent } from './hooks/hooks.component';
-import { TesthookComponent } from './hooks/testhook/testhook.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { SignupFormComponent } from './container/signup-form/signup-form.component';
 
 const routes: Routes = [
-  {path: '', component: ContainerComponent},
-  {path: 'login', component: LoginComponent},
-  {path: '**', component: ContainerComponent},
-]
+  { path: '', component: ContainerComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: ContainerComponent },
+];
 
 @NgModule({
   declarations: [
@@ -29,10 +28,9 @@ const routes: Routes = [
     UserListComponent,
     UserCardComponent,
     FilterComponent,
-    HooksComponent,
-    TesthookComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    SignupFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,9 +39,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
