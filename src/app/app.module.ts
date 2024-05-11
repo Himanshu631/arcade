@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SignupFormComponent } from './container/signup-form/signup-form.component';
+import { LoginBoxComponent } from './container/login-box/login-box/login-box.component';
 
 const routes: Routes = [
   { path: '', component: ContainerComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
     FooterComponent,
     LoginComponent,
     SignupFormComponent,
+    LoginBoxComponent,
   ],
   imports: [
     BrowserModule,

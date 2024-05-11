@@ -14,9 +14,9 @@ export class HeaderComponent {
 
   navItems = [
     { text: 'Home', url: '/' },
-    { text: 'Something', url: '/#' },
-    { text: 'Something', url: '/#' },
-    { text: 'Profile', url: '/#' },
+    { text: 'Chats', url: '/chats' },
+    { text: 'Merchandise', url: '/merchandise' },
+    { text: 'Profile', url: '/profile' },
   ];
 
   @ViewChild('searchInput') searchInp : ElementRef;
