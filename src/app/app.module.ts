@@ -15,11 +15,15 @@ import { LoginComponent } from './login/login.component';
 import { SignupFormComponent } from './container/signup-form/signup-form.component';
 import { LoginBoxComponent } from './container/login-box/login-box/login-box.component';
 import { ChatsHomeComponent } from './container/chats-home/chats-home.component';
+import { ProfileHomeComponent } from './container/profile-home/profile-home.component';
+import { MerchHomeComponent } from './container/merch-home/merch-home.component';
 
 const routes: Routes = [
   { path: '', component: ContainerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'chats', component: ChatsHomeComponent },
+  { path: 'profile', component: ProfileHomeComponent },
+  { path: 'merchandise', component: MerchHomeComponent},
   { path: '**', component: ContainerComponent },
 ];
 
@@ -36,6 +40,8 @@ const routes: Routes = [
     SignupFormComponent,
     LoginBoxComponent,
     ChatsHomeComponent,
+    ProfileHomeComponent,
+    MerchHomeComponent,
   ],
   imports: [
     BrowserModule,
