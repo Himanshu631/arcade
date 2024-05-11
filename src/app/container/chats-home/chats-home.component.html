@@ -1,0 +1,41 @@
+<!-- discord-template.component.html -->
+<div class="flex h-screen">
+    <!-- Left panel -->
+    <div class="w-1/5 bg-gray-800 text-white p-4">
+      <h1 class="text-2xl font-bold mb-4">Discord</h1>
+      <!-- Channels -->
+      <ul>
+        <li class="mb-2">
+          <a href="#" class="block px-2 py-1 rounded hover:bg-gray-700">Channel 1</a>
+        </li>
+        <li class="mb-2">
+          <a href="#" class="block px-2 py-1 rounded hover:bg-gray-700">Channel 2</a>
+        </li>
+        <!-- Add more channels as needed -->
+      </ul>
+    </div>
+  
+    <!-- Content area -->
+    <div class="flex-grow flex flex-col">
+      <!-- Chat area -->
+      <div class="flex-grow bg-gray-200 p-4">
+        <!-- Chat header -->
+        <div class="bg-gray-300 p-2 mb-4">
+          <h2 class="text-lg font-semibold">Channel Name</h2>
+        </div>
+  
+        <!-- Messages -->
+        <div class="overflow-y-auto" style="max-height: calc(100vh - 150px);">
+          <!-- Message component can be added here -->
+        </div>
+      </div>
+  
+      <!-- Message input -->
+      <div class="w-9/12 fixed bottom-1 ml-2 bg-gray-200 p-4 flex">
+        <textarea class="flex-grow h-11 border border-gray-300 rounded p-2 resize-none" placeholder="Type your message..."></textarea>
+        <button class="flex-shrink h-11 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Send</button>
+      </div>
+      
+    </div>
+  </div>
+  

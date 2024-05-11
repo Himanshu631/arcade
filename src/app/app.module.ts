@@ -14,10 +14,12 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SignupFormComponent } from './container/signup-form/signup-form.component';
 import { LoginBoxComponent } from './container/login-box/login-box/login-box.component';
+import { ChatsHomeComponent } from './container/chats-home/chats-home.component';
 
 const routes: Routes = [
   { path: '', component: ContainerComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'chats', component: ChatsHomeComponent },
   { path: '**', component: ContainerComponent },
 ];
 
@@ -33,6 +35,7 @@ const routes: Routes = [
     LoginComponent,
     SignupFormComponent,
     LoginBoxComponent,
+    ChatsHomeComponent,
   ],
   imports: [
     BrowserModule,
